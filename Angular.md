@@ -42,6 +42,9 @@
     + Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass directive, and ngStyle directive etc.
 
 ## What is service
+* Service is a broad category include any value, function, or feature that application needs. A service is typically a class with a narrow, well-defined purpose. It should do something specific and do it well.
+* The injector is the main mechanism. Angular creates an application-wide injector for you during the bootstrap process, and additional injectors as needed.
+* For data or logic that isn't associated with a specific view, and that you want to share across components, you create a service class.
 * A service is used when a common functionality need to be provided to various modules.
 * extract common functionality out of component to have better modularity.
 * Most front-end applications communicate with the backend services over an HTTP protocol. Modern browsers support the two different APIs for making HTTP requests.
@@ -111,13 +114,16 @@
 * In the same way that in a module we have one root component and many possible secondary components
 
 ## NgModule
-* Turned the class AppModule into an Angular module just by using the NgModule decorator. 
+* Angular apps are modular and Angular has its own modularity system called NgModules.
+* NgModules are containers which have components, service, and other code files. 
+* They can import functionality from other NgModules, and export functionality.
+* Every Angular app has at least one NgModule class, the root module
+* most apps have many more feature modules
+* An NgModule is defined by a class decorated with @NgModule(). The @NgModule() decorator is a function that takes a single metadata object, whose properties describe the module.
 * The @NgModule decorator requires at least three properties: imports, declarations and bootstrap.
-    + imports: expects an array of modules
-    + declarations: expects an array of components, directives and pipes that are part of the module.
+    + imports: Other modules whose exported classes are needed by component templates declared in this NgModule.
+    + declarations: The components, directives, and pipes that belong to this NgModule.
     + bootstrap: is where we define the root component of our module
-
-## What are pipes? Give me an customized Pipe example that u write for your most recent project
 
 ## Lazy loading
 * load module on demand
@@ -184,6 +190,7 @@
 
 ## What is a component? Why would you use it.
 * Components are the most basic UI building block.
+* a component's job is to enable the user experience and nothing more.
 
 ## Difference between component and directive.
 * A component is a directive-with-a-template.
@@ -196,6 +203,7 @@
 
 ## What is metadata?
 * metadata is used to decorate a class, it represented by decorators.
+* Decorators are functions that modify JavaScript classes.
 * class decorators
     + such as @Component, @NgModule
 * Property decorator
@@ -207,7 +215,6 @@
 * Parameter decorators
     + Used for parameters inside class constructors
     + @Inject
-
 ## what is angular CLI
 * command line interface
 * creating new project
@@ -215,6 +222,7 @@
 * running the project.
 
 ## What is dependency injection and how does Angular incorporate dependency injection into its framework?
+* Dependency injection (DI) lets you keep your component classes clean and efficient. They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 * Dependency injection is an important application design pattern. Angular have its framework to increase the efficiency and modularity.
 * Dependencies are services or objects that the class need to perform its function.
 * The DI framework lets you supply data to a component from an injectable service class, defined in its own file.
@@ -232,6 +240,7 @@
 * It's how you update application state from user action.
 
 ## What are pipes?
+* pipes to transform data before it is displayed
 * Pipes are simple functions that accept an input value and return a transformed value
 * impure pipe
     + Angular executes an impure pipe during every component change detection cycle
@@ -301,73 +310,133 @@
 ## What is Reactive programming and how to use it with Angular?
 * An Angular application is a reactive system. 
 * the application react to the event and update the model
+* state
+    + state is a single value that varies over time.
+* event
+    + Event streams are sequences of values produced over a period of time
+* reified reactive programming
+    + access to a concrete object representing the act of observation
+    + And having these concrete objects is powerful because we can manipulate them, pass them around, and compose them.
+* reactive programming transparent
+    + developer only interacts with the most recent value, and the act of observation is hidden in the framework.
 ## pure function, impure function
+* An impure function is a function that mutates variables/state/data outside of it’s lexical scope,
+* Pure functions don’t modify external variables/state/data outside of the scope, and returns the same output given the same input.
 
-##
+## switchMap
+* Projects each source value to an Observable which is merged in the output Observable, emitting values only from the most recently projected Observable.
+
+## debounce
+* Emits a value from the source Observable only after a particular time span determined by another Observable has passed without another source emission.
 
 ## Why would you use a spy in a test?
-## What is TestBed?
-## What is Protractor?
-## What is AOT?
-## What is Redux and how does it relate to an Angular App?
-## What is Angular Universal?
+* Jasmine spies are used to track or stub functions or methods. 
+* Spies are an easy way to check if a function was called or to provide a custom return value. 
+* We can use spies to test components that depend on a service and avoid actually calling the service’s methods to get a value. 
 
-## How do you do data binding in Angular?
+## What is TestBed?
+* The TestBed is the most important of the Angular testing utilities. The TestBed creates a dynamically-constructed Angular test module that emulates an Angular @NgModule.
+
+## What is Protractor?
+* Protractor is an end-to-end test framework for Angular and AngularJS applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would.
+
+## What is AOT?
+* AoT, it stands for the Ahead-of-Time compiler 
+* it moves the compilation from run-time to the building process
+
+## What is Redux and how does it relate to an Angular App?
+* Redux is a predictable state container for JavaScript apps.
+* It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test
+
+## What is Angular Universal?
+* renders Angular applications on the server.
+* Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. 
+
 ## How to set headers for every request in Angular?
+* use HTTP interceptors
+* With interception, you declare interceptors that inspect and transform HTTP requests from your application to the server. 
+
 ## How to detect a route change in Angular?
+* you can subscribe to router to detect the changes.
+
 ## Name some security best practices in Angular?
+* 
+
 ## What is tree-shaking?
 ## What are Subjects and what are the different types of Subjects?
-## What is the difference between Subject and Observable?
-## What is the difference between BehaviorSubject vs Subject?
+* An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast
+* BehaviorSubject 
+    * It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately emit the latest value to the subscriber.
+* ReplaySubject
+    + A ReplaySubject has a buffer to records multiple values from the Observable execution and emit them to new subscribers.
+* AsyncSubject
+    + only after the execution completed, the last value of the Observable execution is sent to its observers.
+
 ## What is Content Projection in Angular?
+* Content projection is a way to import HTML content from outside the component and insert that content into the component’s template with ng-content
+
 ## What is the difference between authentication and authorization?
+* Authentication means confirming your own identity, 
+    + Authentication factors determine how the system verify the identity.
+    + Single- Factor Authentication: This is the simplest form of authentication method which requires a password to grant user access to a particular system such as a website or a network.
+    + Two- Factor Authentication: This authentication requires a two- step verification process which not only requires a username and password, but also a piece of information only the user knows.
+    + Multi- Factor Authentication: This is the most advanced method of authentication which requires two or more levels of security from independent categories of authentication to grant user access to the system.
+* authorization means being allowed access to the system.
+    + Authorization occurs after your identity is successfully authenticated by the system
+    + authorization is about whether the user have the permission to access the resource.
+
 ## How do you do JWT authentication?
-## How do you do authorization in Angular?
+* JSON Web Token using for securely transmitting information between parties as a JSON object. This information can be verified because it is digitally signed.
 
-
-## authentication, Authorization
-
-## encode decode
-
-## encrypt decrypt.
-
-## jwt
-
-## interceptor
-
-
-FAQ on Javascript: What is coercion in JavaScript
-What is Scope in JavaScript
-Explain equality in JavaScript
-Null / Undefined in JavaScript
-What is strict mode in JavaScript
-What is a Polyfill
-Var / let / const
-Explain event bubbling and how one may prevent it.
-How to empty an array in JavaScript
-How to check if an object is an array
-How would you use a closure to create a private counter
-Add(5)(10)(8) // return 23
-Callback function example
-How to iterating over object properties and array items?
-Why we need to avoid touching global scope and how to avoid it.
-DOM event DOMContentLoaded
-Deep Copy in js
-ES5 vs ES6
-Undefined vs not defined
-Rest operator vs spread operator
-What is currrying in js
-What is high order function
+## When should you use JSON Web Tokens?
+* Authorization
+    + Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
+* Information Exchange
+    + JSON Web Tokens are a good way of securely transmitting information between parties.
+* JSON Web Tokens consist of three parts separated by dots (.),
+    * Header
+        + The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.
+    * Payload
+        + JSON object with a few properties, these properties are attributes about the user. 
+    * signature
+        + this signature is based on a secret that exists on the server.
+* In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. 
+* we could use localStorage to store the jwt to restart session
+* Now on the client, we can use this token to identify the user.
+* we should include the jwt in the request header.
 
 ## component, communicate between it.
-## immuteablity.
-## formcontrol.
-## redux, why use it.
-## subject, @input, @output.
-## redux
-## lazy loading
-## unit test, how to mock.
+* Passing the reference of one component to another
+    + This solution should be used when components have dependency between them. For example, dropdown and dropdown toggle
+* Communication through parent component
+    + Can be used when it’s easy to control shared state between components through their parent component
+    + @input, @output
+* Communication through Service
+    + Finally, this option is useful and should be used when you have component that is controlled, or its state is asked from multiple instances.
+
+## Immutability.
+* Immutability is a design pattern where something can't be modified after being instantiated.
+*  If we want to change the value of that thing, we must recreate it with the new value instead
+* immutable 
+* mutable
+    + meaning their value can change without having to recreate it.
+
+## Template Driven Forms
+* both validation and binding are all setup at the level of the template.
+* The upside of this way of handling forms is its simplicity
+* On the downside, the form validation logic cannot be unit tested
+* The only way to test this logic is to run an end to end test with a browser
+
+## Reactive Forms, Functional Reactive Programming in Angular
+* formGroup, formControl
+* We can now unit test the form validation logic
+* the form controls and the form itself now provide an Observable-based API. such as valueChange()
+* Everything can be done in both form types, but some things are simpler using reactive forms
+
+## lazy loading 
+* lazy-loading—that is, loading modules on demand—to minimize the amount of code that needs to be loaded at startup.
+
+
 ## tdd 
 ## bdd 
 * behavior test
@@ -381,7 +450,7 @@ What is high order function
 * test function itself inside component.
 
 ## shallow test.
-    + test js, also test html check the dom change.
++ test js, also test html check the dom change.
 
 ## testbed
 * simulate angular component.

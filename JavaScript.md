@@ -1,4 +1,4 @@
-# What is coercion in JavaScript
+## What is coercion in JavaScript
 * it relate to type conversion, it can be implicit or explicit.
 * explicit means we convert the type.
 * implicit means interpreter do the conversion.
@@ -54,7 +54,7 @@
 * type coercion for objects
     - for Boolean, all obejct convert to ture.
 
-# Explain equality in JavaScript
+## Explain equality in JavaScript
 * we have two equality operator,
 * strict and loose equality operator. 
 * strict will not cause the type coercion
@@ -68,7 +68,7 @@
     - it will do some type conversion, and then comparison.
     - that means, it will automatically convert the two different data type into same data type, and then compare them.
 
-# What is Scope in JavaScript
+## What is Scope in JavaScript
 * scope determine the visibility of the resources, such as variable, function.
 * here we have some defination of scope,
 * global scope
@@ -89,13 +89,13 @@
 * lexical scope
     - lexical scope means the children scope could access the variables defined in parent scope.
 
-# Null / Undefined in JavaScriptshit
+## Null / Undefined in JavaScriptshit
 * null is a value, it represent no value.
 * undefined means you only declared a variable, but didn's assign a value to it.
 * null is an assigment value, represent no value. it can be assign to a variable.
 * undefined means you declared a variable, but did't initialize it or didn't assign it a value.
 
-# What is strict mode in JavaScript
+## What is strict mode in JavaScript
 * strict mode declared by adding 'use strict' directive at the beginning of a script or a function.
 * purpose of using strict mode
     - eliminates some js silent errors by throw error.
@@ -103,10 +103,10 @@
     - sometimes could run faster than unstrict mode.
     - prohibits some syntax.
 
-# What is a Polyfill
+## What is a Polyfill
 * polyfill is a piece of code that provide modern feature to older browers.
 
-# Var / let / const
+## Var / let / const
 * variable declared by Var has function scope
 * let and const use for block scope
 * the different between let and const is that
@@ -115,7 +115,7 @@
 * however, if the value we assigned to const variable is complex type
 * we could change its element or property inside it.
 
-# Explain event bubbling and how one may prevent it.
+## Explain event bubbling and how one may prevent it.
 * when an event happens on an element, it first run the handler on it, then it run on all the ancestors who has same event from innner element to outer element.
 * we have two method to prevent it. first one is stopPropagation, this method allow other handler on the same element execute, but will prevent the handler on its ancestor elements. another method is stopImmediatePropagation, it will prevent every event.
 
@@ -129,15 +129,15 @@
     + event.stopImmediatePropagation()
         - stop the bubbling and prevent handlers on the current element from running, means no other handlers execute.
     
-# How to empty an array in JavaScript
+## How to empty an array in JavaScript
 * assign an empty array to the variable, it acctually will create a new empty array to the variable, it means the original array not effect.
 * second method is change the array's length equal to 0, that will delete everything in the array, all the reference to this array will be affect.
 
-# How to check if an object is an array
+## How to check if an object is an array
 * we could use instanceof to check, such as, [1,2] instanceof Array
 * also we could use isArray method of Array to check it.
 
-# How would you use a closure to create a private counter
+## How would you use a closure to create a private counter
 * we could create a function that allows you to update a private variable but that variable cannot be access from outside of the function. 
 * so we should be return some helper function to access the variable or change the variable.
 '''
@@ -152,7 +152,7 @@ function counter() {
 }
 '''
 
-# callback function example
+## callback function example
 '''
 function foo(cb){
     cb();
@@ -163,7 +163,7 @@ function cb(){
 foo(cb);
 '''
 
-# How to iterating over object properties and array items?
+## How to iterating over object properties and array items?
 * for Array, we could use forEach, or for loop, or while loop.
 * for object, we could use for...in loop or the keys() method from object.
     - for (const property in object){console.log(property,object[property])}
@@ -179,26 +179,26 @@ foo(cb);
             console.log(property,obj1[property])
         } //1 1,2 2,3 3
         '''
-# Why we need to avoid touching global scope and how to avoid it.
+## Why we need to avoid touching global scope and how to avoid it.
 * because in javascript, all code share one global namespace, everyone could access it and modify it， also its hard to read the code, or have name clash.
 * we could explicit define the variable, such as use let or const.
 
-# DOM event DOMContentLoaded
+## DOM event DOMContentLoaded
 * after the html document loaded and parsed, it wiil be run, it doesn't wait other resource.
 * this event fired when the initial html document has been completely loaded and parsed.
 * it doesn't wait the stylesheet, images, and subframe to finish loading.
 
-# load
+## load
 * this event run after the whole page loaded.
 * this event fired when the whole page loaded, include stylesheet, images, and all other dependent resouces
 
-# Deep Copy in js
+## Deep Copy in js
 * deep copy is copy everything, new memory space will be allocate to the new variable. in this case, if the old variable changed, the new variable will not be effected.
 
-# showllow copy
+## showllow copy
 * the new object just has the memory addredd copied, if old obejct is change, the new object also change.
 
-# ES5 vs ES6
+## ES5 vs ES6
 * ES is standardised scripting language for javascript.
 * es5 and es6 have some syntax different.
 * such as arrow function
@@ -206,121 +206,106 @@ foo(cb);
 * blocking scoping
 * object manipulation
 
-# Undefined vs not defined
+## Undefined vs not defined
 * undefined is you declared a variable, but didn't assign a  value to it.
 * not defined is an error, i happened when you invoke a variable that not declared.
 
-# Rest operator vs spread operator
+## Rest operator vs spread operator
 * rest parameter is an array, it have indefinite number of arguments.
 * spread operator allows an iterable or object expand in place.
 * such as expand an array in another aray, or expand an object in another object.
 
-# What is currrying in js
+## What is currrying in js
 * Currying transforms a function with multiple parameters into a sequence of functions, each take a single parameters. 
 * the most inside function will use the parameters from all the previous function to do some task, because of the closure, the most inside function have reference to the previous function's parameters. 
 * write little code modules that can be reused and configured
 * avoid frequently calling a function with the same argument.
 
-# What is high order function
+## What is high order function
 * it take one ore more function as argument,
 * return a function as a result.
 
-# what is relationship between Object and Function
+## what is relationship between Object and Function
 * 
 
-# what is first class function
+## what is first class function
 * function is treat like any other variable, you can return a function, you can assign the function to a variable, you can pass the function as a argument to another function.
 
-# what is closure
+## what is closure
 * closure is formed by function.
 * a closure is the combination of a function and its lexical environment within that the function was declared. 
 * which means, inner function could access the outer function variable.
 * that is, we could create private variable.
 
-# what is fetch
+## what is fetch
 
-# dom lifecycle
-# what is callback use for
+## dom lifecycle
+
+## what is callback use for
 * Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks.
 
-# global scope 
+## global scope 
 * for example, in brower api, the window is global scope.
 
-# import / export / require.js
+## import / export / require.js
 
-# syntax sugar means 
-
-# what is prototype?
+## what is prototype?
 * it is an object.
 * it is a property of constructor function, we could add property or method to it.
 * so all the instance could be share the method or property in the prototype.
 * prototype chain is use for the inheritance.
 
-# storage, sessions on browser
+## storage, sessions on browser
 * local storage, cookies, session storage.
 * local, session provide by browser.
 
-* cookies, 
-each domain have its own cookie
-main purpose communicate between cli and server
-cookies will store some data.
-data store in cookies will be sent with XMLHttprequest call.
-limitation, the size, cannot store to much data.
+## cookies, 
+* each domain have its own cookie
+* main purpose communicate between cli and server
+* cookies will store some data.
+* data store in cookies will be sent with XMLHttprequest call.
+* limitation, the size, cannot store to much data.
 
-* local storage
-not disappear, if you close browser
-the data will be store forever, if you not clear it.
+## local storage
+* not disappear, if you close browser
+* the data will be store forever, if you not clear it.
 
-* session storage
-after close brower, the data will be remove.
+## session storage
+* after close brower, the data will be remove.
 
-# Object.defineProperty
+## Object.defineProperty
 * The static method Object.defineProperty() defines a new property directly on an object, 
 * or modifies an existing property on an object, and returns the object.
 * set
     - for complex type, the set function will check the address of the property to see whether it is changed, such as Array.
 * get
 
-# SPA dynamic
+## SPA dynamic
 
-# what is promise
+## what is promise
 * promise is an object using for handle the asynchronous task.
 * it will finally produce resloved value, or reject vlaue.
 * promise have three state, first is pending, its the initial state,
 * second is fullfilled, means promise resloved some value
 * third is rejected, means promise rejected some value. 
 
-# meta tag
+## meta tag
 * viewport, seo, charset
 
-# sematic html
+## sematic html
 * 508 policy, aria
 
-# table / form / input / section / aside / nav / ul li
-# iframe / a target / window.location / window.navigator
-# var / let / const - scope, hoisting
-# constructor function / class
-# map / reduce / filter
-# bind / apply / call
-# spread / rest
-# closure
-# curring
-# IIFE
-# prototype
-# singleton / facade / factory / module
-# mvc / mvvm
-# try catch
-# callback function
-# async await / promise / fetch
-# XMLHttprequest
+## iframe / a target / window.location / window.navigator
+## async await / promise / fetch
+
+## XMLHttprequest
 * use to request data from a web server, and update a part of the page.
 
-# oop vs function programming
-# event bubbling / capture
+## event bubbling / capture
 
-# event.preventdefault
+## event.preventdefault
 * cancel the event, means the default action that belong to the event will not occur.
 
-# event.delegation
+## event.delegation
 * use for add same event for many similar element.
 * add event to the elements' parent, then all the element could trigger the event.
