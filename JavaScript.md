@@ -2,7 +2,6 @@
 * it relate to type conversion, it can be implicit or explicit.
 * explicit means we convert the type.
 * implicit means interpreter do the conversion.
-* type coercion can be implicit or explicit
 * explicit type coercion
     - point out which type convert to by code.
     - such as Number(value)
@@ -91,8 +90,7 @@
 
 ## Null / Undefined in JavaScriptshit
 * null is a value, it represent no value.
-* undefined means you only declared a variable, but didn's assign a value to it.
-* null is an assigment value, represent no value. it can be assign to a variable.
+* null can be assign to a variable.
 * undefined means you declared a variable, but did't initialize it or didn't assign it a value.
 
 ## What is strict mode in JavaScript
@@ -208,7 +206,7 @@ foo(cb);
 
 ## Undefined vs not defined
 * undefined is you declared a variable, but didn't assign a  value to it.
-* not defined is an error, i happened when you invoke a variable that not declared.
+* not defined is an error, it happened when you invoke a variable that not declared.
 
 ## Rest operator vs spread operator
 * rest parameter is an array, it have indefinite number of arguments.
@@ -222,11 +220,15 @@ foo(cb);
 * avoid frequently calling a function with the same argument.
 
 ## What is high order function
-* it take one ore more function as argument,
+* it take one or more function as argument,
 * return a function as a result.
 
 ## what is relationship between Object and Function
-* 
+* function is a Function object, which belong to Object.
+* In JavaScript, functions are first-class objects, 
+* because they can have properties and methods just like any other object. 
+* What distinguishes them from other objects is that functions can be called. 
+* In brief, they are Function objects.
 
 ## what is first class function
 * function is treat like any other variable, you can return a function, you can assign the function to a variable, you can pass the function as a argument to another function.
@@ -237,17 +239,14 @@ foo(cb);
 * which means, inner function could access the outer function variable.
 * that is, we could create private variable.
 
-## what is fetch
-
 ## dom lifecycle
+* DOMContentLoaded event – DOM is ready, so the handler can lookup DOM nodes, initialize the interface.
+* load event – external resources are loaded, so styles are applied, image sizes are known etc.
+* beforeunload event – the user is leaving: we can check if the user saved the changes and ask them whether they really want to leave.
+* unload – the user almost left, but we still can initiate some operations, such as sending out statistics.
 
 ## what is callback use for
 * Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks.
-
-## global scope 
-* for example, in brower api, the window is global scope.
-
-## import / export / require.js
 
 ## what is prototype?
 * it is an object.
@@ -260,6 +259,7 @@ foo(cb);
 * local, session provide by browser.
 
 ## cookies, 
+* Cookies were once used for general client-side storage, Cookies are sent with every request, so they can worsen performance 
 * each domain have its own cookie
 * main purpose communicate between cli and server
 * cookies will store some data.

@@ -2,10 +2,10 @@
 * Single Page Applications are super easy to deploy in Production, and even to version over time!
 * a much-improved user experience due to less full page reloads and a better overall performance because less bandwidth is needed.
     - On a SPA, after the initial page load, no more HTML gets sent over the network. Instead, only data gets requested from the server (or sent to the server).
-    - So while a SPA is running, only data gets sent over the wire, which takes a lot less time and bandwidth than constantly sending HTML. 
+    - So while a SPA is running, only data gets sent over the wire, which takes less time and bandwidth than constantly sending HTML. 
 * In a SPA after application startup, the data to HTML transformation process has been moved from the server to the client – SPAs have the equivalent of a template engine running in your browser!
 
-## What is TypeScript and why would I use it in place of JavaScript? [closed]
+## What is TypeScript and why would I use it in place of JavaScript?
 * TypeScript is a superset of JavaScript which primarily provides optional static typing, classes and interfaces. 
 * it will compiles to plain javascript
 * One of the big benefits is to enable IDEs to provide a richer environment for spotting common errors as you type the code.
@@ -21,10 +21,9 @@
 * Event Binding
     + In Angular 8, event binding is used to handle the events raised from the DOM like button click, mouse move etc. When the DOM event happens (eg. click, change, keyup), it calls the specified method in the component. In the following example, the cookBacon() method from the component is called when the button is clicked: 
 * two way binding
-    + We have seen that in one-way data binding any change in the template (view) were not be reflected in the component TypeScript code. To resolve this problem, Angular provides two-way data binding.
-    + In two-way databinding, automatic synchronization of data happens between the Model and the View. Here, change is reflected in both components. Whenever you make changes in the Model, it will be reflected in the View and when you make changes in View, it will be reflected in Model. 
-    + This happens immediately and automatically, ensures that the HTML template and the TypeScript code are updated at all times.
+    + In two-way data binding, automatic synchronization of data happens between the Model and the View. When you make changes in the Model, it will be reflected in the View and when you make changes in View, it will be reflected in Model. 
     + In two way data binding, property binding and event binding are combined together.
+    + This happens immediately and automatically, ensures that the HTML template and the TypeScript code are updated at all times.
     + [(ngModel)] = "[property of your component]" 
     + Note: For two way data binding, we have to enable the ngModel directive. It depends upon FormsModule in angular/forms package, so we have to add FormsModule in imports[] array in the AppModule.
 
@@ -131,14 +130,11 @@
 * With lazy loading our application does not need to load everything at once, it only needs to load what the user expects to see when the app first loads.
 * Modules that are lazily loaded will only be loaded when the user navigates to their routes.
 
-## what is subject.
-* An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast
-* A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners
-
 ## What is an observable? 
-* Observables have no shared execution and are lazy.
-* Subscribing to an Observable is analogous to calling a Function.
-* Observables are able to deliver values either synchronously or asynchronously.
+* An Observable is a Producer of multiple values, "pushing" them to Consumers.
+* It is lazy that can synchronously or asynchronously return zero to multiple values over the time.
+* Observable is lazy, that means only after you subscribe to it, it will execute and return value. 
+* Subscribing to an Observable is similar to calling a Function.
 * What is the difference between an Observable and a function? 
     + Observables can "return" multiple values over time, something which functions cannot.
     + Functions can only return one value
@@ -173,6 +169,21 @@
     + promise is eager, it callback will execute once the promise created.
     + promise is always asynchronous.
     + promise may provide only a single value.
+
+## what is subject.
+* An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast
+* A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners
+
+## what are operators
+* Operators are functions. There are two kinds of operators:
+* pipable operator
+    + A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.
+    + the operator that canbe piped to observables buy using .pipe() function.
+    + the pipable operator do not change the existing observable instance, they return a new one.
+    + such as filter.
+* creation operator
+    + functions that used to create an observable with some common predefined behavior.
+    + like of(), from()
 
 ## Differences between AngularJS /angular 4 /angular 6
 * AngularJS
@@ -222,11 +233,11 @@
 * running the project.
 
 ## What is dependency injection and how does Angular incorporate dependency injection into its framework?
-* Dependency injection (DI) lets you keep your component classes clean and efficient. They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
-* Dependency injection is an important application design pattern. Angular have its framework to increase the efficiency and modularity.
+* Dependency injection is an important application design pattern which a class asks for dependencies from external sources rather than creating them itself.
 * Dependencies are services or objects that the class need to perform its function.
+* DI make your apps flexible, efficient, and robust, as well as testable and maintainable
+* Dependency injection (DI) lets you keep your component classes clean and efficient. They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 * The DI framework lets you supply data to a component from an injectable service class, defined in its own file.
-* it is a coding pattern in which a class asks for dependencies from external sources rather than creating them itself.
 * In Angular, the DI framework provides declared dependencies to a class when that class is instantiated.
 * @Injectable decorator mark it as a service that can be injected.
 * You can tell Angular to inject a dependency in a component's constructor by specifying a constructor parameter with the dependency type.
@@ -256,17 +267,6 @@
 ## What is HttpClient and its benefits? How do you perform Error handling for HttpClient?
 * HttpClient is an http api based on XMLHttpRequest interface, it enable angular to communicate with backend services.
 * use catch function. or inside the subscribe function to handle it.
-
-## what are operators
-* Operators are functions. There are two kinds of operators:
-* pipable operator
-    + A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.
-    + the operator that canbe piped to observables buy using .pipe() function.
-    + the pipable operator do not change the existing observable instance, they return a new one.
-    + such as filter.
-* creation operator
-    + functions that used to create an observable with some common predefined behavior.
-    + like of(), from()
 
 ## How can I select an element in a component template?
 * set local reference to an element, and use @ViewChild to access the element.
@@ -319,6 +319,7 @@
     + And having these concrete objects is powerful because we can manipulate them, pass them around, and compose them.
 * reactive programming transparent
     + developer only interacts with the most recent value, and the act of observation is hidden in the framework.
+
 ## pure function, impure function
 * An impure function is a function that mutates variables/state/data outside of it’s lexical scope,
 * Pure functions don’t modify external variables/state/data outside of the scope, and returns the same output given the same input.
@@ -436,7 +437,6 @@
 ## lazy loading 
 * lazy-loading—that is, loading modules on demand—to minimize the amount of code that needs to be loaded at startup.
 
-
 ## tdd 
 ## bdd 
 * behavior test
@@ -458,4 +458,6 @@
 ## integration test
 ## e2e test
 
-## jasimin-karma/ jest / mocha
+## jasmine-karma/ jest / 
+* Jasmine as the testing framework, it is behavior driven testing. to write readable testing code.
+* Karma as the test runner.
