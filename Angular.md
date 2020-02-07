@@ -62,6 +62,13 @@
     + Called after the constructor and the first ngOnChanges() 
     + Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor
 
+## What are angular component life cycle hooks?
+* Directive and component instances have a lifecycle as Angular creates, updates, and destroys them.
+* Developers can manage lifecycle by implementing one or more of the lifecycle hook interfaces in the Angular core library.
+* Angular creates and renders components along with their children, checks when their data-bound properties change, and destroys them before removing them from the DOM.
+* Angular offers lifecycle hooks that provide visibility into these key life moments and the ability to act when they occur.
+* A directive has the same set of lifecycle hooks.
+
 ## How do you submit a form.
 * use (ngSubmit)
 
@@ -86,9 +93,6 @@
 
 ## validation 
 * Improve overall data quality by validating user input for accuracy and completeness.
-
-## Immutability 
-* Immutability is a design pattern where something can't be modified after being instantiated. If we want to change the value of that thing, we must recreate it with the new value instead.
 
 ## What are Route Guards in Angular?
 * Route guards allow to grant or remove access to certain parts of the navigation. Another route guard, the CanDeactivate guard, even allows you to prevent a user from accidentally leaving a component with unsaved changes.
@@ -116,19 +120,18 @@
 * Angular apps are modular and Angular has its own modularity system called NgModules.
 * NgModules are containers which have components, service, and other code files. 
 * They can import functionality from other NgModules, and export functionality.
-* Every Angular app has at least one NgModule class, the root module
-* most apps have many more feature modules
 * An NgModule is defined by a class decorated with @NgModule(). The @NgModule() decorator is a function that takes a single metadata object, whose properties describe the module.
 * The @NgModule decorator requires at least three properties: imports, declarations and bootstrap.
     + imports: Other modules whose exported classes are needed by component templates declared in this NgModule.
     + declarations: The components, directives, and pipes that belong to this NgModule.
     + bootstrap: is where we define the root component of our module
 
-## Lazy loading
-* load module on demand
-* Lazy loading modules helps us decrease the startup time. 
-* With lazy loading our application does not need to load everything at once, it only needs to load what the user expects to see when the app first loads.
-* Modules that are lazily loaded will only be loaded when the user navigates to their routes.
+## lazy loading feature module
+* lazy-loading is a design pattern which loading modules on demand.
+* By default, angular will load all the modules on startup, 
+* so with lazy loading, we could reduce the initial size on startup, to reduce loading time, response time, resource consumption
+* we could use lazy loading feature by config the route with loadChildren property.
+* only load the module the user want to see.
 
 ## What is an observable? 
 * An Observable is a Producer of multiple values, "pushing" them to Consumers.
@@ -172,7 +175,15 @@
 
 ## what is subject.
 * An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast
-* A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners
+* Subjects are like EventEmitters: they maintain a registry of many listeners
+
+## what are the different types of Subjects?
+* BehaviorSubject 
+    * It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately emit the latest value to the subscriber.
+* ReplaySubject
+    + A ReplaySubject has a buffer to records multiple values from the Observable execution and emit them to new subscribers.
+* AsyncSubject
+    + only after the execution completed, the last value of the Observable execution is sent to its observers.
 
 ## what are operators
 * Operators are functions. There are two kinds of operators:
@@ -193,7 +204,7 @@
 * Angular
     + based on typescript
     + based on service/controller
-    + conponent based UI approach
+    + component based UI approach
 * Angular 4
     + Introducing httpclient for http request.
 * Angular 6
@@ -226,6 +237,7 @@
 * Parameter decorators
     + Used for parameters inside class constructors
     + @Inject
+
 ## what is angular CLI
 * command line interface
 * creating new project
@@ -258,11 +270,9 @@
 * pure pipe
     + Angular executes a pure pipe only when it detects a pure change to the input value.
     + A pure change is either a change to a primitive input value or the object reference 
+
 ## What is a parameterized pipe?
 * A pipe can accept any number of optional parameters
-
-## What is a bootstrapping module?
-* Every application has at least one Angular module, the root module that you bootstrap to launch the application is called as bootstrapping module.
 
 ## What is HttpClient and its benefits? How do you perform Error handling for HttpClient?
 * HttpClient is an http api based on XMLHttpRequest interface, it enable angular to communicate with backend services.
@@ -275,19 +285,13 @@
 * use router guard. 
 
 ## What is bootstrapping module
+* Every application has at least one Angular module, the root module that you bootstrap to launch the application is called as bootstrapping module.
 * the root appmodule, the application launch from that module. it import the BrowserModule, and have a bootstrap array which specific which component we bootstrap from.
 
 ## @ViewChild
 * DOM query mechanism 
 * return a reference.
 * template reference variable ##, to naming dom element, and then using ViewChild decorator to query it in class.
-
-## What are angular component life cycle hooks?
-* Directive and component instances have a lifecycle as Angular creates, updates, and destroys them.
-* Developers can manage lifecycle by implementing one or more of the lifecycle hook interfaces in the Angular core library.
-* Angular creates and renders components along with their children, checks when their data-bound properties change, and destroys them before removing them from the DOM.
-* Angular offers lifecycle hooks that provide visibility into these key life moments and the ability to act when they occur.
-* A directive has the same set of lifecycle hooks.
 
 ## How to bundle an Angular app for production?
 * use command under CLI: ng build --prod
@@ -298,22 +302,26 @@
 * import, Imports other modules with the components, directives, and pipes for the current module.
 * providers, Provide service for component to use
 
-## what is ngrx, 
+## what is ngrx
 * NgRx is a framework for building reactive applications in Angular.
-* NgRx provides state management for creating maintainable explicit applications, by storing single state and the use of actions in order to express state changes.
+* NgRx provides state management for creating maintainable explicit applications. It store single state and use the actions to express state changes.
 * Action
-    + Actions are one of the main building blocks in NgRx. Actions express unique events that happen throughout your application.
+    + Actions express unique events that happen throughout your application.
+    + Actions are one of the main building blocks in NgRx. 
 * Reducers 
-    + responsible for handling transitions from one state to the next state in your application. Reducer functions handle these transitions by determining which actions to handle based on the action's type.
+    + reducer is handle the transition from one state to the next state base on the action's type.
+    + responsible for handle transitions from one state to the next state in your application. Reducer functions handle these transitions by determining which actions to handle based on the action's type.
     + Reducers are pure functions in that they produce the same output for a given input. 
 
 ## What is Reactive programming and how to use it with Angular?
-* An Angular application is a reactive system. 
+* Angular application is a reactive system. 
 * the application react to the event and update the model
 * state
     + state is a single value that varies over time.
+    + We usually do not care about how many times it gets updated — only the most recent value matters.
 * event
     + Event streams are sequences of values produced over a period of time
+    + Every single event matters, including the order in which the events are emitted.
 * reified reactive programming
     + access to a concrete object representing the act of observation
     + And having these concrete objects is powerful because we can manipulate them, pass them around, and compose them.
@@ -354,24 +362,21 @@
 * Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. 
 
 ## How to set headers for every request in Angular?
-* use HTTP interceptors
+* use HTTP interceptor, it will inscpect and transform the HTTPrequest and HTTPresponse.
 * With interception, you declare interceptors that inspect and transform HTTP requests from your application to the server. 
 
 ## How to detect a route change in Angular?
 * you can subscribe to router to detect the changes.
 
 ## Name some security best practices in Angular?
-* 
+* Prevent cross-site scripting (XSS).
+* Block HTTP-related vulnerability.
+* Avoid risky Angular APIs.
+* Don't customize Angular files.
+* Stay updated with the latest Angular library.
 
 ## What is tree-shaking?
-## What are Subjects and what are the different types of Subjects?
-* An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast
-* BehaviorSubject 
-    * It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately emit the latest value to the subscriber.
-* ReplaySubject
-    + A ReplaySubject has a buffer to records multiple values from the Observable execution and emit them to new subscribers.
-* AsyncSubject
-    + only after the execution completed, the last value of the Observable execution is sent to its observers.
+* Tree shaking is a step in a build process that removes unused code from a code base. Removing unused code can be thought as “tree shaking,” or you can visualize the physical shaking of a tree and the remaining dead leaves falling off of the tree.
 
 ## What is Content Projection in Angular?
 * Content projection is a way to import HTML content from outside the component and insert that content into the component’s template with ng-content
@@ -390,8 +395,9 @@
 * JSON Web Token using for securely transmitting information between parties as a JSON object. This information can be verified because it is digitally signed.
 
 ## When should you use JSON Web Tokens?
-* Authorization
-    + Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
+* Authentication, Authorization
+* In authentication, when the user successfully logs in using their credentials, the server will return a JSON Web Token.
+* Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
 * Information Exchange
     + JSON Web Tokens are a good way of securely transmitting information between parties.
 * JSON Web Tokens consist of three parts separated by dots (.),
@@ -401,7 +407,6 @@
         + JSON object with a few properties, these properties are attributes about the user. 
     * signature
         + this signature is based on a secret that exists on the server.
-* In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. 
 * we could use localStorage to store the jwt to restart session
 * Now on the client, we can use this token to identify the user.
 * we should include the jwt in the request header.
@@ -417,14 +422,15 @@
 
 ## Immutability.
 * Immutability is a design pattern where something can't be modified after being instantiated.
-*  If we want to change the value of that thing, we must recreate it with the new value instead
+* If we want to change the value of that thing, we must recreate it with the new value instead
 * immutable 
 * mutable
     + meaning their value can change without having to recreate it.
 
 ## Template Driven Forms
-* both validation and binding are all setup at the level of the template.
-* The upside of this way of handling forms is its simplicity
+* we setup the validation and binding on the template level.
+* use ngModel directie for two way data binding, and add the validator as property of the html element.
+* The upside of this way is that it is very simple.
 * On the downside, the form validation logic cannot be unit tested
 * The only way to test this logic is to run an end to end test with a browser
 
@@ -434,16 +440,16 @@
 * the form controls and the form itself now provide an Observable-based API. such as valueChange()
 * Everything can be done in both form types, but some things are simpler using reactive forms
 
-## lazy loading 
-* lazy-loading—that is, loading modules on demand—to minimize the amount of code that needs to be loaded at startup.
-
 ## tdd 
 ## bdd 
 * behavior test
+
 ## CI/CD pipeline
 * continuous integration/ continuous delivery
 * DevOps handle cicd
-* travis/ jenkins
+* tools: travis/ jenkins
+* Continuous integration (CI) servers let you set up your project repository so that your tests run on every commit and pull request.
+* There are paid CI services like Circle CI and Travis CI, and you can also host your own for free using Jenkins and others
 
 ## unit test
 * focus on js
@@ -453,11 +459,13 @@
 + test js, also test html check the dom change.
 
 ## testbed
+* TestBed is the primary api for writing unit tests for Angular applications and libraries.
 * simulate angular component.
 
 ## integration test
+
 ## e2e test
 
 ## jasmine-karma/ jest / 
-* Jasmine as the testing framework, it is behavior driven testing. to write readable testing code.
-* Karma as the test runner.
+* Jasmine is a behavior-driven development framework for testing JavaScript code
+* Karma is a test runner.
