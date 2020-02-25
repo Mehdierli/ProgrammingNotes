@@ -309,3 +309,9 @@ foo(cb);
 ## event.delegation
 * use for add same event for many similar element.
 * add event to the elements' parent, then all the element could trigger the event.
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 ## Angular Single Page Applications (SPA): What are the Benefits?
+* Single page application means after the initial html page downloaded, we only request data from the server, and work on the data on the client side. On the client side, it has template engine to process the data, to transform the data into html, to manipulate the dom with the data. in this case because we transfer the data instead of html file, and use client engine to handle the data, the respone time is greatly reduced.
 * Single Page Applications are super easy to deploy in Production, and even to version over time!
 * a much-improved user experience due to less full page reloads and a better overall performance because less bandwidth is needed.
     - On a SPA, after the initial page load, no more HTML gets sent over the network. Instead, only data gets requested from the server (or sent to the server).
@@ -11,6 +12,8 @@
 * One of the big benefits is to enable IDEs to provide a richer environment for spotting common errors as you type the code.
 
 ## Data Binding
+* data binding using for define the communication betwee a component and the DOM. there are two type of data binding, one-way binding and two-way binding. For one-way binding, there are 3 types, first one is string interpolation, it used to display the data from the component to the view.
+Second is property binding, it used to bind data from component to the property of the dom element. third is event binding, it used to handle the event that raised from DOM, when the DOM event happens, it call the specified method in the component. Two way binding, will synchronize the data between model and view, when you make change in the model, the view also change, and when you change the view, the model also change.
 * define the communication between a component and the DOM
 * String interpolation
     + String Interpolation is a one-way databinding technique which is used to output the data from a TypeScript code to HTML template (view). It uses the template expression in double curly braces to display the data from the component to the view
@@ -28,6 +31,7 @@
     + Note: For two way data binding, we have to enable the ngModel directive. It depends upon FormsModule in angular/forms package, so we have to add FormsModule in imports[] array in the AppModule.
 
 ## Directives
+* The Angular directives is a class that used to manipulate the DOM, to modify its structure, or change its appearance or behavior. There are three type of directives. First is component directive, it is a class with @Component decorator, it has tempalte associate with it. Second one is structural directive, it modify the structure of the dom, such as ngFor, ngIf. Last one is the attribute directive, it modify the appearance and behavior of the dom element, such as ngClass, ngStyle.
 * A class that can modify the structure of the DOM or modify attributes in the DOM and component data model.
 * The Angular directives are used to manipulate the DOM. By using Angular directives, you can change the appearance, behavior or a layout of a DOM element. It also helps you to extend HTML.
 * Component Directives
@@ -41,6 +45,7 @@
     + Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass directive, and ngStyle directive etc.
 
 ## What is service
+* Service is a broad category that include data or function or feature for application, usually a service is a class with @Inejctable decorator that with a specific purpose. Such as state management, or make http request. Service is associate with the dependency injection system, we could creates an application-wide injector during the bootstrap process, and additional injectors as needed. Totally, the service has common functionality and will be used by various modules.
 * Service is a broad category include any value, function, or feature that application needs. A service is typically a class with a narrow, well-defined purpose. It should do something specific and do it well.
 * The injector is the main mechanism. Angular creates an application-wide injector for you during the bootstrap process, and additional injectors as needed.
 * For data or logic that isn't associated with a specific view, and that you want to share across components, you create a service class.
